@@ -37,6 +37,7 @@ Create volume bucket and put key
 
 Get Primordial SCM ID
     ${result} =             Execute                 ozone admin scm roles --service-id=scmservice
+                            Log to console          Result is ${result}
     ${primordial_node} =    Get Lines Containing String                     ${result}           scm1
     ${primordial_split} =   Split String            ${primordial_node}      :
     ${primordial_scmId} =   Strip String            ${primordial_split[3]}
