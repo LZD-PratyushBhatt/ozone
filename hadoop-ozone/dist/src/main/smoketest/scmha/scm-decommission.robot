@@ -65,8 +65,10 @@ Transfer Leader to non-primordial node Follower
 Decommission SCM Primordial Node
     ${primordial_scm_id} =  Get Primordial SCM ID
                             LOG                     Primordial scm id : ${primordial_scm_id}
+                            Log to console          Primordial scm id : ${primordial_scm_id}
     ${decomm_output} =      Execute And Ignore Error   ozone admin scm decommission --nodeid=${primordial_scm_id}
                             LOG                     ${decomm_output}
+                            Log to console          Decommission output is : ${decomm_output}
                             Should Contain          ${decomm_output}               Cannot remove current leader
     ${md5sum} =             Create volume bucket and put key
     ${transfer_result} =    Transfer Leader to non-primordial node Follower
