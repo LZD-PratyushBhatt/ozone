@@ -87,7 +87,7 @@ execute_robot_test scm4.org  -v "TARGET_SCM:scm3.org" scmha/scm-leader-transfer.
 wait_for_execute_command scm3.org 240 "ozone admin cert info 5"
 
 #decomission scm1.org
-execute_robot_test scm3.org scmha/scm-decommission.robot
+execute_robot_test scm1.org scmha/scm-decommission.robot
 
 # check the metrics
 execute_robot_test scm2.org scmha/root-ca-rotation.robot
