@@ -69,7 +69,7 @@ Transfer Leader to non-primordial node Follower
 Decommission SCM Primordial Node
     ${primordial_scm_id} =  Get Primordial SCM ID
                             LOG                     Primordial scm id : ${primordial_scm_id}
-                            Log to console          SCM roles result is : ${result}
+                            Log to console          SCM roles result is : ${primordial_scm_id}
     ${decomm_output} =      Execute And Ignore Error   ozone admin scm decommission --nodeid=${primordial_scm_id}
                             LOG                     ${decomm_output}
                             Log to console          Decomm SCM result is : ${result}
