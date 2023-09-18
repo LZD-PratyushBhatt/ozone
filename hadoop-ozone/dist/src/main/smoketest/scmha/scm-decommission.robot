@@ -72,7 +72,7 @@ Decommission SCM Primordial Node
                             Log to console          SCM roles result is : ${primordial_scm_id}
     ${decomm_output} =      Execute And Ignore Error   ozone admin scm decommission --nodeid=${primordial_scm_id}
                             LOG                     ${decomm_output}
-                            Log to console          Decomm SCM result is : ${result}
+                            Log to console          Decomm SCM result is : ${decomm_output}
                             Should Contain          ${decomm_output}               Cannot remove current leader
     ${md5sum} =             Create volume bucket and put key
     ${transfer_result} =    Transfer Leader to non-primordial node Follower
@@ -84,6 +84,7 @@ Decommission SCM Primordial Node
                             LOG                     SCM Instance Count before SCM Decommission: ${node_count_pre}
     ${decommission_res} =   Execute                 ozone admin scm decommission --nodeid=${primordial_scm_id}
                             LOG                     ${decommission_res}
+                            Log to console          Decomm SCM result new is : ${decommission_res}
                             Should Contain          ${decommission_res}                         Decommissioned
     ${node_count} =         Get SCM Node count
     ${node_count_post} =    Convert to String       ${node_count}
