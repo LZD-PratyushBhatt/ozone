@@ -28,8 +28,8 @@ List om roles
 
 List om roles as JSON
     ${output_with_id_passed} =      Execute                 ozone admin om roles --service-id=omservice --json
-    ${leader} =                     Execute                 echo '${output_with_id_passed}' | jq -r '.[] | select(.serverRole == "LEADER")'
+    ${leader} =                     Execute                 echo '${output_with_id_passed}' | jq '.[] | select(.[] | .serverRole == "LEADER")'
                                     Should Not Be Equal     ${leader}       ${EMPTY}
     ${output_without_id_passed} =   Execute                 ozone admin om roles --json
-    ${leader} =                     Execute                 echo '${output_without_id_passed}' | jq -r '.[] | select(.serverRole == "LEADER")'
+    ${leader} =                     Execute                 echo '${output_without_id_passed}' | jq '.[] | select(.[] | .serverRole == "LEADER")'
                                     Should Not Be Equal     ${leader}       ${EMPTY}
