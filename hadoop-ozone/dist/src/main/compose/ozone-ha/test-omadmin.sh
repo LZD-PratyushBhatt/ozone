@@ -19,12 +19,15 @@
 
 COMPOSE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 export COMPOSE_DIR
+export SECURITY_ENABLED=false
+export SCM=scm1
+export OM_SERVICE_ID=omservice
 
 # shellcheck source=/dev/null
 source "$COMPOSE_DIR/../testlib.sh"
 
 start_docker_env
 
-execute_robot_test om1 kinit.robot
+execute_robot_test scm1 kinit.robot
 
-execute_robot_test om1 omha/om-roles.robot
+execute_robot_test scm1 omha/om-roles.robot
